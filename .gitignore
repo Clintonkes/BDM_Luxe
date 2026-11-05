@@ -35,3 +35,6 @@ pnpm-debug.log*
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Local-only build brief (kept out of the repo)
+prompt.md

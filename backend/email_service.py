@@ -6,13 +6,13 @@ logger = logging.getLogger(__name__)
 
 # Email configuration - Resend API
 RESEND_API_KEY = os.getenv("RESEND_API_KEY")
-EMAIL_FROM = os.getenv("EMAIL_FROM", "Lentra LLC <onboarding@resend.dev>")
+EMAIL_FROM = os.getenv("EMAIL_FROM", "BDM Luxe LLC <onboarding@resend.dev>")
 EMAIL_ENABLED = bool(RESEND_API_KEY)
 
-BUSINESS_NAME = "LENTRA LLC"
-BUSINESS_LOCATION = "SAN ANTONIO, TX"
-PINE = "#123a32"
-GOLD = "#c24e22"
+BUSINESS_NAME = "BDM LUXE"
+BUSINESS_LOCATION = "LUCASVILLE, OH"
+PINE = "#121410"
+GOLD = "#55601a"
 
 
 def send_email(to_email: str, subject: str, html_body: str, reply_to: str = None) -> bool:
@@ -66,20 +66,20 @@ def _layout(heading: str, body: str, header_tagline: str = "LAWN & LANDSCAPE", r
     <html>
     <head>
         <style>
-            body {{ font-family: Inter, "Helvetica Neue", Arial, sans-serif; background: #fbf9f5; margin: 0; padding: 40px; }}
-            .container {{ max-width: 600px; margin: 0 auto; background: white; border: 1px solid #e8ebe0; border-radius: 12px; overflow: hidden; }}
+            body {{ font-family: Inter, "Helvetica Neue", Arial, sans-serif; background: #efe8da; margin: 0; padding: 40px; }}
+            .container {{ max-width: 600px; margin: 0 auto; background: white; border: 1px solid #ddd5c4; border-radius: 2px; overflow: hidden; }}
             .header {{ background: {PINE}; padding: 40px; text-align: center; }}
             .header h1 {{ color: #ffffff; font-family: Georgia, 'Times New Roman', serif; font-size: 28px; font-weight: 600; letter-spacing: 2px; margin: 0; }}
-            .header p {{ color: {GOLD}; font-size: 11px; letter-spacing: 3px; margin-top: 8px; }}
+            .header p {{ color: #d7f25c; font-size: 11px; letter-spacing: 3px; margin-top: 8px; }}
             .body {{ padding: 40px; }}
             .body h2 {{ color: {PINE}; font-size: 22px; font-weight: 600; margin-bottom: 20px; }}
-            .body p {{ color: #324836; line-height: 1.7; font-size: 15px; }}
+            .body p {{ color: #2a2620; line-height: 1.7; font-size: 15px; }}
             .status-badge {{ display: inline-block; padding: 8px 20px; color: white; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; border-radius: 6px; margin: 8px 0 16px; }}
-            .details {{ background: #fbf9f5; padding: 24px; margin: 24px 0; border-left: 3px solid {GOLD}; }}
-            .details p {{ margin: 8px 0; font-size: 14px; color: {PINE}; }}
-            .ref {{ font-family: 'Courier New', monospace; font-size: 12px; color: #7a9378; text-align: center; margin-top: 10px; letter-spacing: 2px; }}
+            .details {{ background: #f6f1e7; padding: 24px; margin: 24px 0; border-left: 3px solid {GOLD}; }}
+            .details p {{ margin: 8px 0; font-size: 14px; color: {PINE}; white-space: pre-line; }}
+            .ref {{ font-family: 'Courier New', monospace; font-size: 12px; color: #6b6a5c; text-align: center; margin-top: 10px; letter-spacing: 2px; }}
             .footer {{ padding: 30px 40px; border-top: 1px solid #e8ebe0; text-align: center; }}
-            .footer p {{ font-size: 12px; color: #7a9378; margin: 4px 0; }}
+            .footer p {{ font-size: 12px; color: #6b6a5c; margin: 4px 0; }}
         </style>
     </head>
     <body>
@@ -106,7 +106,7 @@ def _layout(heading: str, body: str, header_tagline: str = "LAWN & LANDSCAPE", r
 def booking_confirmation_html(name: str, reference: str, address: str, service: str = None, frequency: str = None, preferred_date=None, preferred_time: str = None) -> str:
     date_display = preferred_date.strftime("%B %-d, %Y") if preferred_date else "To be scheduled"
     body = f"""
-        <p>Your quote request has been received. A Lentra LLC specialist will review it and contact you within one business day to schedule your free property assessment.</p>
+        <p>Your quote request has been received. The owner reviews every request personally and will contact you within one business day to arrange a free on-site walk-through.</p>
         <div class="details">
             {_details([
                 ("Service", service or "To be determined"),
@@ -117,7 +117,7 @@ def booking_confirmation_html(name: str, reference: str, address: str, service: 
                 ("Status", "Pending Review"),
             ])}
         </div>
-        <p>Thank you for choosing Lentra LLC for lawn care in San Antonio.</p>
+        <p>Thank you for considering BDM Luxe for your property.</p>
     """
     return _layout(f"Thank you, {_e(name)}.", body, reference=reference)
 
@@ -152,7 +152,7 @@ def booking_status_html(name: str, reference: str, status: str, address: str) ->
         "confirmed": "Your service request has been <strong>confirmed</strong>. We look forward to caring for your property.",
         "approved": "Your service request has been <strong>approved</strong>. Our team will contact you shortly to schedule your first visit.",
         "cancelled": "Your service request has been <strong>cancelled</strong>. If you believe this is an error, please contact us.",
-        "completed": "Your service has been <strong>completed</strong>. Thank you for choosing Lentra LLC for your lawn care needs.",
+        "completed": "Your service has been <strong>completed</strong>. Thank you for trusting BDM Luxe with your property.",
     }
 
     status_colors = {

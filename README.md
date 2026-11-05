@@ -1,21 +1,37 @@
-# Lentra LLC
+# BDM Luxe LLC
 
-Marketing site and quote/contact backend for Lentra LLC (lawn care & landscaping, San Antonio, TX).
+Marketing site and quote/contact backend for **BDM Luxe LLC**, a lawn care and landscaping company in Lucasville, Ohio (Scioto County).
 
-- **Frontend**: React + Vite + Tailwind, in `src/`. Deployed to GitHub Pages by `.github/workflows/frontend.yml` on every push to `main`.
-- **Backend**: FastAPI + SQLAlchemy, in `backend/`. Deployed to Render from `render.yaml` / `Dockerfile`.
+- **Frontend**: React 18, Vite, React Router, Tailwind and react-helmet-async, in `src/`. Deployed to GitHub Pages by `.github/workflows/frontend.yml` on every push to `main`.
+- **Backend**: FastAPI and SQLAlchemy, in `backend/`. Deployed to Render from `render.yaml` and the `Dockerfile`.
 
-The quote form (`/quote`) posts to `POST /api/bookings` and the contact form (`/contact`) to
-`POST /api/contacts` (see `src/lib/api.ts`). Each submission is saved to the database, the customer
-gets a confirmation email, and `ADMIN_EMAIL` gets a notification (reply goes straight to the customer).
+## Where things live
 
-Business details (name, phone, email, address, hours, service areas), services, gallery,
-testimonials and FAQs all live in `src/config/site.ts`. Page photos live in `src/config/images.ts`;
-each page's top photo is preloaded from `index.html` (see `vite.config.ts`) and every other photo is
-fetched as soon as the first page loads (`src/components/Layout.tsx`), so pages open with images ready.
+| What | File |
+| --- | --- |
+| Business details, colours, fonts, nav, hours, service areas, trust signals, form settings | `src/config/site.js` (read by Tailwind and Vite too) |
+| Services (cards and `/services/:slug` detail pages) | `src/data/services.js` |
+| Gallery, testimonials, FAQ, team, credentials, pricing plans | `src/data/content.js` |
+| Journal posts | `src/data/posts.jsx` |
+| Form submission (the single submit function) | `src/lib/submitForm.js` |
+| Logo | `src/components/Logo.jsx`, `public/favicon.svg` |
 
-The logo artwork is `src/components/Logo.tsx`, with the same mark in `public/lentra-icon.svg` (favicon)
-and `public/apple-touch-icon.png`. Colors (evergreen, clay, sand) are defined in `tailwind.config.js`.
+Items marked **Placeholder** on the site (trust signals, reviews, team names, prices, credentials, social links) need the owner to confirm or replace them before launch. The photos are verified Pexels images used as representative photography.
+
+## Routes
+
+`/`, `/about`, `/services`, `/services/:slug` (7 services), `/pricing`, `/gallery`, `/service-areas`, `/testimonials`, `/faq`, `/blog`, `/blog/:slug` (2 posts), `/quote`, `/contact`, `/privacy`, `/terms`, and a custom 404.
+
+## Forms → backend
+
+| Form | Endpoint | Notes |
+| --- | --- | --- |
+| Quote wizard (`/quote`) | `POST /api/bookings` | The service, frequency, lot size, preferred date/time and address map to their own columns. All other answers go into `notes`. The returned `reference` is shown on the confirmation screen. |
+| Contact (`/contact`) | `POST /api/contacts` | The topic is stored as `subject`. |
+
+Each submission is saved, the customer gets a confirmation email, and `ADMIN_EMAIL` gets a notification. Replying to that notification goes straight to the customer.
+
+If `VITE_API_URL` is not set, `npm run dev` runs the forms in demo mode. A production build instead asks visitors to call or email, so no enquiry is silently lost.
 
 ## Local development
 
@@ -32,56 +48,48 @@ npm install
 npm run dev                        # http://localhost:5173
 ```
 
-Checks: `npm run typecheck`, `npm run lint`, `npm run build`.
+Checks: `npm run lint` and `npm run build`. To test a production build locally against the backend, run `npm run preview` (port 4173) and start the backend with `CORS_ORIGINS=http://localhost:4173`.
 
 ## Deploying
 
 ### 1. Backend (Render)
 
-1. Render → New → Blueprint → pick this repo. It creates the backend service from `render.yaml`.
-2. Fill in the environment variables it asks for:
-   - `DATABASE_URL`: a Postgres database (e.g. Neon)
-   - `ADMIN_EMAIL`, `ADMIN_PASSWORD`: admin API login, and where new quote/contact notifications are sent
-   - `RESEND_API_KEY`, `EMAIL_FROM`: optional; without them emails are only logged, not sent.
-     Resend's `onboarding@resend.dev` sender can only deliver to your own Resend account address;
-     verify a domain in Resend to email customers.
-   - `CORS_ORIGINS`: leave empty until you have a custom domain (see below)
-3. Check `https://<service>.onrender.com/api/health` returns `{"status":"ok"}`.
+1. Render → New → Blueprint → pick this repo. It creates `bdm-luxe-backend` from `render.yaml`.
+2. Set these environment variables:
+   - `DATABASE_URL`: a Postgres database (for example Neon).
+   - `ADMIN_EMAIL` and `ADMIN_PASSWORD`: the admin API login. New quote and contact notifications go to `ADMIN_EMAIL`.
+   - `RESEND_API_KEY` and `EMAIL_FROM`: optional. Without them, emails are logged instead of sent.
+   - `CORS_ORIGINS`: your custom domain once you have one, for example `https://example.com,https://www.example.com`.
+3. Check that `https://<service>.onrender.com/api/health` returns `{"status":"ok"}`.
 
-The free Render plan sleeps when idle, so the first form submission after a quiet spell can take 30 to 60 seconds.
+The free Render plan sleeps when idle, so the first submission after a quiet spell can take up to a minute. The forms wait 75 s and tell the visitor what's happening.
 
 ### 2. Frontend (GitHub Pages)
 
 1. Repo → Settings → Pages → Source: **GitHub Actions**.
-2. Repo → Settings → Secrets and variables → Actions → **Variables**: set `VITE_API_URL` to the
-   Render URL (e.g. `https://<service>.onrender.com`). Without it the site still deploys, but the forms ask visitors to call or email instead.
-3. Push to `main`, or Actions → "Deploy Frontend to GitHub Pages" → Run workflow.
+2. Repo → Settings → Secrets and variables → Actions → **Variables**: set `VITE_API_URL` to the Render URL.
+3. Push to `main`, or open Actions → "Deploy Frontend to GitHub Pages" → Run workflow.
 
-The site is built for the root of `https://lentrallc.org` (`--base=/` in the workflow); GitHub
-redirects the `github.io` URL to the custom domain.
-Direct links and refreshes on inner pages (e.g. `/quote`) work via `public/404.html`.
+The site is then live at **https://clintonkes.github.io/BDM_Luxe/**.
 
-The backend already allows `https://clintonkes.github.io`. If the repo lives under another GitHub
-account, add that `https://<user>.github.io` to `CORS_ORIGINS` on Render.
+### 3. Custom domain
 
-### 3. Custom domain: lentrallc.org
+The same build works under `/BDM_Luxe/` and at a domain root. The router base and asset URLs are worked out in the browser (`src/lib/paths.js`, `vite.config.js`), and `public/404.html` handles deep links in both cases.
 
-1. At your domain registrar, add these DNS records:
-   - `A` records for `lentrallc.org` (host `@`) to `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153` and `185.199.111.153`
-   - `CNAME` for `www` to `clintonkes.github.io`
-2. Repo > Settings > Pages > **Custom domain**: enter `lentrallc.org`, save, then tick
-   **Enforce HTTPS** once the certificate is issued (can take up to an hour after DNS resolves).
-3. Redeploy the backend on Render. `https://lentrallc.org` and `https://www.lentrallc.org` are
-   already allowed in `backend/main.py`, so `CORS_ORIGINS` can stay empty.
+1. At your registrar, add these DNS records:
+   - `A` records for `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - `CNAME` for `www`: `clintonkes.github.io`
+2. Repo → Settings → Pages → **Custom domain**: enter the domain, then tick **Enforce HTTPS** once the certificate is issued.
+3. Add the repo variable `CUSTOM_DOMAIN` (for example `example.com`) and re-run the workflow. This points canonical URLs, Open Graph tags, `sitemap.xml` and `robots.txt` at the domain.
+4. On Render, add the domain to `CORS_ORIGINS`. `https://clintonkes.github.io` is already allowed.
 
-The canonical URL, social share image (`public/og-image.png`), `robots.txt` and `sitemap.xml` already
-point at `https://lentrallc.org`. To email customers from your own address, verify `lentrallc.org` in
-Resend and set `EMAIL_FROM` on Render, e.g. `Lentra LLC <quotes@lentrallc.org>`.
+Once the domain is attached, GitHub redirects the github.io link to it, so both links keep working.
 
 ### Admin
 
-There is no admin UI yet; the admin API is usable from `https://<service>.onrender.com/docs`:
-`POST /api/admin/login` for a token, then list/update/delete bookings and contacts, or
-`GET /api/admin/dashboard` for counts. Updating a booking's status emails the customer.
-Credentials come from `ADMIN_EMAIL`/`ADMIN_PASSWORD`, or `python backend/set_admin.py <email> <password>`.
+There is no admin UI. Use the admin API from `https://<service>.onrender.com/docs`:
+
+1. `POST /api/admin/login` to get a token.
+2. List, update or delete bookings and contacts, or call `GET /api/admin/dashboard` for counts.
+
+Changing a booking's status emails the customer. To set the credentials, use `ADMIN_EMAIL`/`ADMIN_PASSWORD` or run `python backend/set_admin.py <email> <password>`.

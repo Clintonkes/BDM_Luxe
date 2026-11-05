@@ -3,8 +3,7 @@ name: Deploy Frontend to GitHub Pages
 on:
   push:
     branches: [main]
-  # Lets the site be rebuilt from the Actions tab, e.g. right after a custom
-  # domain is added or VITE_API_URL is changed.
+  # Rebuild from the Actions tab, e.g. after setting VITE_API_URL or CUSTOM_DOMAIN.
   workflow_dispatch:
 
 permissions:
@@ -19,28 +18,32 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Repo variables (Settings > Secrets and variables > Actions > Variables):
+      #   VITE_API_URL  – Render backend URL, e.g. https://bdm-luxe-backend.onrender.com
+      #   CUSTOM_DOMAIN – e.g. example.com (optional; canonical URLs, sitemap, CNAME)
+      VITE_API_URL: ${{ vars.VITE_API_URL }}
+      SITE_URL: ${{ vars.CUSTOM_DOMAIN && format('https://{0}', vars.CUSTOM_DOMAIN) || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: package-lock.json
-      # The site still deploys without it; the quote and contact forms then
-      # ask visitors to call or email instead of submitting.
       - name: Check VITE_API_URL is set
         run: |
-          if [ -z "${{ vars.VITE_API_URL }}" ]; then
-            echo "::warning::VITE_API_URL is not set, so the quote and contact forms are disabled. Set the repo variable (Settings > Secrets and variables > Actions > Variables) to the Render backend URL and re-run this workflow."
+          if [ -z "$VITE_API_URL" ]; then
+            echo "::warning::VITE_API_URL is not set, so the quote and contact forms will ask visitors to call or email. Set the repo variable to the Render backend URL and re-run this workflow."
           fi
       - uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm run lint
-      # The site is served from the root of https://lentrallc.org (GitHub
-      # redirects the github.io URL there), so assets always live under "/".
-      - run: npm run build -- --base=/
-        env:
-          VITE_API_URL: ${{ vars.VITE_API_URL }}
+      # One build serves both https://<owner>.github.io/BDM_Luxe/ and a custom
+      # domain root: asset URLs and the router base are resolved at runtime.
+      - run: npm run build
+      - name: Add CNAME for custom domain
+        if: ${{ vars.CUSTOM_DOMAIN != '' }}
+        run: echo "${{ vars.CUSTOM_DOMAIN }}" > dist/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

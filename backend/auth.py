@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from database import get_db, Admin
 import os
 
-SECRET_KEY = os.getenv("SECRET_KEY", "petraslynn-dev-secret-change-in-production")
+SECRET_KEY = os.getenv("SECRET_KEY", "bdmluxe-dev-secret-change-in-production")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 

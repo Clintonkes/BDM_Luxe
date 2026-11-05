@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: petraslynn-backend
+    name: bdm-luxe-backend
     runtime: docker
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health

@@ -5,87 +5,191 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 7rem;
   }
   body {
-    @apply bg-sand-50 font-sans text-sand-800 antialiased;
+    @apply bg-ink font-sans text-bone antialiased;
     line-height: 1.65;
+    font-feature-settings: 'ss01', 'kern';
+    overflow-x: hidden;
   }
   h1, h2, h3, h4 {
-    @apply font-display text-evergreen-950;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    @apply font-display font-normal text-bone;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
   }
-  ::selection {
-    @apply bg-clay-200 text-evergreen-950;
-  }
+  p { text-wrap: pretty; }
+  ::selection { @apply bg-clipping text-ink; }
+
+  /* Visible, high-contrast focus everywhere (outline is never clipped by
+     the ticket-cut shapes because those live on pseudo-elements). */
   :focus-visible {
-    @apply outline-none ring-2 ring-clay-500 ring-offset-2 ring-offset-sand-50;
+    outline: 2px solid theme('colors.clipping');
+    outline-offset: 3px;
   }
+  :focus:not(:focus-visible) { outline: none; }
+
+  img { @apply max-w-full; }
+
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+    html { scroll-behavior: auto; }
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 }
 
 @layer components {
-  .container-max {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
-  }
-  .section {
-    @apply py-20 md:py-28;
-  }
-  .eyebrow {
-    @apply inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-[0.2em] text-clay-600;
-  }
-  .eyebrow::before {
-    content: '';
-    @apply h-px w-6 bg-clay-500;
-  }
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-display text-[15px] font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60;
-  }
-  .btn-primary {
-    @apply btn bg-clay-600 text-white shadow-[0_8px_24px_-8px_rgb(194_78_34/0.6)] hover:-translate-y-0.5 hover:bg-clay-700;
-  }
-  .btn-dark {
-    @apply btn bg-evergreen-900 text-white hover:-translate-y-0.5 hover:bg-evergreen-800;
-  }
-  .btn-ghost {
-    @apply btn border border-white/30 text-white backdrop-blur-sm hover:border-white hover:bg-white/10;
-  }
-  .btn-outline {
-    @apply btn border border-evergreen-900/20 text-evergreen-900 hover:border-evergreen-900 hover:bg-evergreen-900 hover:text-white;
-  }
-  .card {
-    @apply rounded-3xl border border-sand-200/80 bg-white shadow-soft;
-  }
+  .frame { @apply mx-auto w-full max-w-frame px-4 sm:px-6 lg:px-10; }
+
+  /* Small all-caps labels — the "plot marker" voice of the brand. */
   .label {
-    @apply mb-2 block text-sm font-semibold text-evergreen-950;
+    @apply font-sans text-[0.7rem] font-semibold uppercase tracking-label text-lichen;
   }
-  .input {
-    @apply w-full rounded-xl border border-sand-300 bg-white px-4 py-3 text-[15px] text-evergreen-950 placeholder:text-sand-400 transition focus:border-evergreen-600 focus:outline-none focus:ring-4 focus:ring-evergreen-600/15;
+
+  /* ── Ticket-cut shape system ─────────────────────────────────────────
+     Top-left and bottom-right corners are chamfered, like a nursery plant
+     tag. The shape is drawn on ::before (edge) and ::after (fill) so focus
+     outlines on the element itself stay fully visible. */
+  .cut, .btn, .card, .card-ink, .choice {
+    --c: 14px;
+    --edge: transparent;
+    --fill: transparent;
+    position: relative;
+    isolation: isolate;
+  }
+  :is(.cut, .btn, .card, .card-ink, .choice)::before,
+  :is(.cut, .btn, .card, .card-ink, .choice)::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+    transition: background-color 0.25s ease;
+  }
+  :is(.cut, .btn, .card, .card-ink, .choice)::before { inset: 0; background: var(--edge); }
+  :is(.cut, .btn, .card, .card-ink, .choice)::after { inset: 1px; background: var(--fill); }
+
+  .cut-img {
+    --c: 22px;
+    clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+  }
+
+  /* Perforated ticket: half-moon notches on both sides. */
+  .ticket {
+    --n: 11px;
+    -webkit-mask:
+      radial-gradient(circle var(--n) at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle var(--n) at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+    mask:
+      radial-gradient(circle var(--n) at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle var(--n) at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+  }
+
+  /* ── Buttons ───────────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2.5 px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200;
+    --c: 10px;
+  }
+  .btn-primary { --edge: theme('colors.clipping'); --fill: theme('colors.clipping'); @apply text-ink; }
+  .btn-primary:hover { --fill: #e6ff7a; --edge: #e6ff7a; }
+  .btn-ghost { --edge: rgb(239 232 218 / 0.35); --fill: theme('colors.ink'); @apply text-bone; }
+  .btn-ghost:hover { --edge: theme('colors.clipping'); @apply text-clipping; }
+  .btn-light { --edge: theme('colors.ink'); --fill: theme('colors.ink'); @apply text-bone; }
+  .btn-light:hover { --fill: theme('colors.loam'); }
+  .btn[disabled] { @apply cursor-not-allowed opacity-60; }
+
+  .card {
+    --c: 18px;
+    --edge: rgb(239 232 218 / 0.12);
+    --fill: theme('colors.loam');
+  }
+  .card-ink { --c: 18px; --edge: rgb(239 232 218 / 0.12); --fill: theme('colors.ink-2'); }
+  a.card:hover, a.card-ink:hover, .card-hover:hover { --edge: theme('colors.clipping'); }
+
+  /* ── Signature motif: mow stripes ──────────────────────────────────────
+     Alternating bands, like a freshly cut lawn seen from above. */
+  .mow {
+    background-image: repeating-linear-gradient(90deg, rgb(239 232 218 / 0.09) 0 22px, rgb(239 232 218 / 0.025) 22px 44px);
+  }
+  .mow-accent {
+    background-image: repeating-linear-gradient(90deg, theme('colors.clipping') 0 22px, #b9d43e 22px 44px);
+  }
+  .mow-diag {
+    background-image: repeating-linear-gradient(115deg, rgb(239 232 218 / 0.06) 0 34px, transparent 34px 68px);
+  }
+  .mow-rule { @apply block h-2 w-full; background-image: repeating-linear-gradient(90deg, theme('colors.clipping') 0 22px, #b9d43e 22px 44px); }
+
+  .mow-loader {
+    @apply block h-1.5 w-28;
+    background-image: repeating-linear-gradient(90deg, theme('colors.clipping') 0 22px, #b9d43e 22px 44px);
+    animation: mowload 1s linear infinite;
+    background-size: 44px 100%;
+  }
+  @keyframes mowload { to { background-position: 44px 0; } }
+
+  /* ── Forms ─────────────────────────────────────────────────────────── */
+  .field-label { @apply mb-2 block text-sm font-semibold text-bone; }
+  .field {
+    @apply block w-full rounded-none border-0 border-b border-bone/30 bg-transparent px-0 py-3 text-base text-bone placeholder:text-lichen/70 transition-colors;
+  }
+  .field:hover { @apply border-bone/60; }
+  .field:focus { @apply border-clipping outline-none; box-shadow: 0 1px 0 0 theme('colors.clipping'); }
+  .field[aria-invalid='true'] { @apply border-danger; }
+  .field-box {
+    @apply block w-full border border-bone/20 bg-ink-2 px-4 py-3 text-base text-bone placeholder:text-lichen/70 transition-colors;
+  }
+  .field-box:hover { @apply border-bone/40; }
+  .field-box:focus { @apply border-clipping outline-none; }
+  .field-box[aria-invalid='true'] { @apply border-danger; }
+  .field-error { @apply mt-2 flex items-center gap-1.5 text-sm text-danger; }
+  select.field, select.field-box { @apply appearance-none bg-no-repeat pr-10; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23A7AE94' stroke-width='1.6'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E"); background-position: right 0.75rem center; }
+  select option { @apply bg-ink text-bone; }
+
+  /* Choice tiles used by the quote wizard. */
+  .choice {
+    @apply flex cursor-pointer items-start gap-3 p-4 text-left text-sm transition-colors;
+    --c: 10px;
+    --edge: rgb(239 232 218 / 0.18);
+    --fill: theme('colors.ink-2');
+  }
+  .choice:hover { --edge: rgb(239 232 218 / 0.45); }
+  .choice:has(input:checked) { --edge: theme('colors.clipping'); --fill: #1f2414; }
+  .choice:has(input:focus-visible) { outline: 2px solid theme('colors.clipping'); outline-offset: 3px; }
+
+  /* Long-form article typography (blog, privacy, terms). */
+  .prose-bdm { @apply max-w-[68ch] text-[1.06rem] leading-[1.8] text-bone-dim; }
+  .prose-bdm h2 { @apply mb-4 mt-14 text-3xl text-bone sm:text-[2.1rem]; }
+  .prose-bdm h3 { @apply mb-3 mt-10 font-sans text-lg font-semibold text-bone; }
+  .prose-bdm p { @apply mb-5; }
+  .prose-bdm ul { @apply mb-6 space-y-2.5 pl-0; }
+  .prose-bdm ul li { @apply relative pl-7; }
+  .prose-bdm ul li::before { content: ''; @apply absolute left-0 top-[0.7em] h-[3px] w-4 bg-clipping; }
+  .prose-bdm ol { @apply mb-6 list-decimal space-y-2.5 pl-6 marker:font-semibold marker:text-clipping; }
+  .prose-bdm a { @apply text-clipping underline decoration-clipping/40 underline-offset-4 hover:decoration-clipping; }
+  .prose-bdm strong { @apply font-semibold text-bone; }
+  .prose-bdm table { @apply my-8 w-full border-collapse text-left text-sm; }
+  .prose-bdm th { @apply border-b border-bone/25 py-3 pr-4 font-semibold text-bone; }
+  .prose-bdm td { @apply border-b border-bone/10 py-3 pr-4 align-top; }
+  .prose-bdm blockquote { @apply my-8 border-l-2 border-clipping pl-6 font-display text-2xl leading-snug text-bone; }
+
+  /* Placeholder marker for owner-to-confirm content. */
+  .ph {
+    @apply inline-flex items-center gap-1 border border-dashed border-clipping/60 px-1.5 py-0.5 font-sans text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-clipping;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Scroll-reveal. Content stays visible without JS or with reduced motion. */
+  .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: var(--d, 0ms); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce), print {
+    .js .reveal { opacity: 1; transform: none; }
   }
-  .text-pretty {
-    text-wrap: pretty;
-  }
-  /* Subtle mowed lawn stripes, used behind dark sections. */
-  .lawn-stripes {
-    background-image: repeating-linear-gradient(
-      100deg,
-      rgb(255 255 255 / 0.025) 0 56px,
-      transparent 56px 112px
-    );
-  }
+  .text-outline { -webkit-text-stroke: 1px theme('colors.bone'); color: transparent; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 }

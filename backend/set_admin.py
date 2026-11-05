@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Set or update the admin login credentials for Lentra LLC.
+Set or update the admin login credentials for BDM Luxe LLC.
 
 Usage:
     python backend/set_admin.py <email> <password>
@@ -48,7 +48,7 @@ def main():
         print("Error: Password must be at least 6 characters.")
         sys.exit(1)
 
-    db_url = os.getenv("DATABASE_URL", "sqlite:///./petraslynn.db")
+    db_url = os.getenv("DATABASE_URL", "sqlite:///./bdmluxe.db")
     print(f"Target: {describe_target(db_url)}")
     if db_url.startswith("sqlite"):
         print(
