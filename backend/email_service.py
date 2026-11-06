@@ -4,7 +4,7 @@ import os
 
 logger = logging.getLogger(__name__)
 
-# Email configuration - Resend API
+# Email configuration: Resend API
 RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 EMAIL_FROM = os.getenv("EMAIL_FROM", "BDM Luxe LLC <onboarding@resend.dev>")
 EMAIL_ENABLED = bool(RESEND_API_KEY)

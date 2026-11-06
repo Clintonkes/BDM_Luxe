@@ -35,7 +35,7 @@ export default function Faq() {
             Straight answers, <span className="italic text-clipping">no small print.</span>
           </>
         }
-        intro="Grouped by topic. Can’t find it? Call — the owner answers."
+        intro="Grouped by topic. Can’t find it? Call. The owner answers."
       />
 
       <section className="frame grid gap-12 py-16 sm:py-24 lg:grid-cols-12" aria-label="Questions and answers">

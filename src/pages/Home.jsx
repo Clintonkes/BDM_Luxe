@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <Seo
         title="Lawn Care & Landscaping in Lucasville, OH"
-        description="BDM Luxe keeps Scioto County lawns and landscapes to a tailored standard — weekly maintenance, landscape design, bed care, hardscape and commercial grounds. Free on-site quotes."
+        description="BDM Luxe keeps Scioto County lawns and landscapes to a tailored standard: weekly maintenance, landscape design, bed care, hardscape and commercial grounds. Free on-site quotes."
       />
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
@@ -199,7 +199,7 @@ export default function Home() {
               Verified reviews will appear here. We only publish reviews from real customers, with their permission.
             </p>
             <p className="mt-4">
-              <Placeholder>Review slots — owner to add verified reviews</Placeholder>
+              <Placeholder>Review slots: owner to add verified reviews</Placeholder>
             </p>
             <ArrowLink to="/testimonials" className="mt-8">
               All testimonials
@@ -229,7 +229,7 @@ export default function Home() {
         <div className="lg:col-span-5">
           <Eyebrow no="05">Good questions</Eyebrow>
           <h2 id="faq-title" className="mt-5 text-4xl sm:text-5xl">Before you book.</h2>
-          <p className="mt-6 max-w-sm text-bone-dim">The three things people ask most. Everything else is on the FAQ page — or just call.</p>
+          <p className="mt-6 max-w-sm text-bone-dim">The three things people ask most. Everything else is on the FAQ page, or just call.</p>
           <ArrowLink to="/faq" className="mt-8">
             Read the full FAQ
           </ArrowLink>

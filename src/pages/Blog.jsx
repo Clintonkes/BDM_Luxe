@@ -11,7 +11,7 @@ export default function Blog() {
   return (
     <>
       <Seo
-        title="The Journal — Lawn & Garden Advice for Southern Ohio"
+        title="The Journal: Lawn & Garden Advice for Southern Ohio"
         description="Practical lawn and landscape advice from BDM Luxe for Scioto County properties: mowing heights by month, mulch depth, bed edging and more."
       />
       <PageHero
@@ -22,7 +22,7 @@ export default function Blog() {
             Field notes from <span className="italic text-clipping">southern Ohio ground.</span>
           </>
         }
-        intro="Practical, local advice — the same things we tell customers on a walk-through, written down."
+        intro="Practical, local advice: the same things we tell customers on a walk-through, written down."
       />
 
       <section aria-labelledby="posts-title" className="frame py-16 sm:py-24">

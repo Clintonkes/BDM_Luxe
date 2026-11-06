@@ -1,6 +1,6 @@
 import { Award, FileCheck2, ShieldCheck, Sprout } from 'lucide-react';
 import { site } from '@/config/site';
-import { credentials, team, values } from '@/data/content';
+import { credentials, values } from '@/data/content';
 import { pexels } from '@/lib/img';
 import Seo from '@/components/Seo';
 import Img from '@/components/Img';
@@ -13,8 +13,8 @@ export default function About() {
   return (
     <>
       <Seo
-        title="About Us — Owner-Operated in Lucasville, OH"
-        description="BDM Luxe is an owner-operated lawn and landscape company based in Lucasville, Ohio. Our story, the standards we work to, the team, and our credentials."
+        title="About Us: Owner-Operated in Lucasville, OH"
+        description="BDM Luxe is an owner-operated lawn and landscape company based in Lucasville, Ohio. Our story, the standards we work to, and our credentials."
       />
       <PageHero
         no="A"
@@ -27,7 +27,7 @@ export default function About() {
         intro="BDM Luxe started with a simple belief: a lawn looks expensive because of the details, not the square footage."
       />
 
-      {/* Story — editorial two-column with drop cap and pull image */}
+      {/* Story: editorial two-column with drop cap and pull image */}
       <section aria-labelledby="story-title" className="frame grid gap-14 py-20 sm:py-28 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Reveal className="lg:sticky lg:top-32">
@@ -50,12 +50,12 @@ export default function About() {
               and a crew.
             </p>
             <p>
-              We work across Scioto County — heavy clay soil, humid summers, a long leaf season and winters that heave
+              We work across Scioto County: heavy clay soil, humid summers, a long leaf season and winters that heave
               anything built carelessly. Everything we do is shaped by that ground: mowing heights that change with the
               months, plants chosen for wet feet, paver bases dug deeper than the job seems to need.
             </p>
             <p>
-              The name says “luxe”, but it isn’t about price. It is about the finish — the spade-cut edge, the clippings
+              The name says “luxe”, but it isn’t about price. It is about the finish: the spade-cut edge, the clippings
               blown off the drive, the gate latched behind us. Small, repeated things that make a property look kept.
             </p>
             <p className="flex flex-wrap items-center gap-2 text-sm">
@@ -65,10 +65,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values — bone band, numbered grid */}
+      {/* Values: bone band, numbered grid */}
       <section aria-labelledby="values-title" className="bg-bone py-20 text-ink sm:py-28">
         <div className="frame">
-          <p className="label !text-loam">02 — What we hold to</p>
+          <p className="label !text-loam">02 · What we hold to</p>
           <h2 id="values-title" className="mt-5 max-w-2xl text-4xl !text-ink sm:text-5xl">Four habits we don’t compromise on.</h2>
           <ul className="mt-14 grid gap-px bg-ink/15 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
@@ -82,37 +82,11 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team — monogram tags, no stock faces pretending to be staff */}
-      <section aria-labelledby="team-title" className="frame py-20 sm:py-28">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <Eyebrow no="03">The crew</Eyebrow>
-            <h2 id="team-title" className="mt-5 text-4xl sm:text-5xl">People you’ll actually see.</h2>
-          </div>
-          <p className="max-w-sm text-bone-dim">The same faces on your property every visit. Names and bios below are placeholders for the owner to complete.</p>
-        </div>
-        <ul className="mt-14 grid gap-5 md:grid-cols-3">
-          {team.map((m, i) => (
-            <Reveal as="li" key={m.role} delay={i * 90} className="card p-7">
-              <div className="flex items-center justify-between">
-                <span className="cut inline-flex h-20 w-20 items-center justify-center font-display text-2xl text-ink" style={{ '--c': '12px', '--edge': '#D7F25C', '--fill': '#D7F25C' }}>
-                  {m.initials}
-                </span>
-                <Placeholder />
-              </div>
-              <h3 className="mt-8 font-display text-2xl">{m.name}</h3>
-              <p className="label mt-2">{m.role}</p>
-              <p className="mt-4 text-sm text-bone-dim">{m.bio}</p>
-            </Reveal>
-          ))}
-        </ul>
-      </section>
-
       {/* Credentials */}
       <section aria-labelledby="cred-title" className="border-y border-bone/10 bg-ink-2 py-20 sm:py-28">
         <div className="frame grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Eyebrow no="04">Credentials</Eyebrow>
+            <Eyebrow no="03">Credentials</Eyebrow>
             <h2 id="cred-title" className="mt-5 text-4xl sm:text-5xl">On paper, too.</h2>
             <p className="mt-6 text-bone-dim">
               We only list credentials we can show you. Items marked as placeholders are awaiting the owner’s confirmation.
@@ -135,7 +109,7 @@ export default function About() {
         </div>
       </section>
 
-      <CtaBand title="Meet us on your ground." text={`Call ${site.phone} or request a walk-through — the owner comes out personally.`} />
+      <CtaBand title="Meet us on your ground." text={`Call ${site.phone} or request a walk-through. The owner comes out personally.`} />
     </>
   );
 }

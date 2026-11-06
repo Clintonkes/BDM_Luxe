@@ -15,7 +15,7 @@ export default function NotFound() {
     <>
       <Seo title="Page not found" description="This page has gone to seed. Head back to the BDM Luxe homepage or request a quote." noindex />
       <section className="relative flex min-h-[92vh] items-center overflow-hidden pb-20 pt-36">
-        {/* The mow-stripe motif — with one stripe left uncut. */}
+        {/* The mow-stripe motif, with one stripe left uncut. */}
         <div aria-hidden="true" className="absolute inset-0 flex">
           {Array.from({ length: 14 }).map((_, i) => (
             <div key={i} className={`flex-1 ${i === 9 ? 'bg-gradient-to-b from-clipping/25 via-clipping/10 to-transparent' : i % 2 ? 'bg-bone/[0.035]' : 'bg-bone/[0.015]'}`} />

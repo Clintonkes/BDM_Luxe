@@ -49,7 +49,7 @@ export default function Privacy() {
       <p>We may disclose information if required by law. We never sell or rent your personal information.</p>
       <h2 id="cookies">Cookies & local storage</h2>
       <p>
-        This site does not set advertising or analytics cookies. It uses your browser’s local storage to remember small preferences — for example,
+        This site does not set advertising or analytics cookies. It uses your browser’s local storage to remember small preferences, for example
         that you dismissed the announcement bar or answered the cookie notice. You can clear this at any time in your browser settings.
       </p>
       <h2 id="retention">How long we keep it</h2>

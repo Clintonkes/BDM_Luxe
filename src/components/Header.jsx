@@ -67,7 +67,7 @@ export default function Header() {
               <div className="frame flex items-center justify-center gap-3 py-2 text-center text-[0.8rem] font-semibold sm:text-sm">
                 <p className="truncate">
                   <span className="hidden sm:inline">{site.announcement.text} </span>
-                  <span className="sm:hidden">Spring routes filling — free walk-throughs.</span>{' '}
+                  <span className="sm:hidden">Spring routes are filling. Free walk-throughs.</span>{' '}
                   <Link to={site.announcement.href} tabIndex={showAnnouncement ? 0 : -1} className="underline decoration-2 underline-offset-2 hover:no-underline">
                     {site.announcement.linkLabel}
                   </Link>
@@ -93,7 +93,7 @@ export default function Header() {
               scrolled ? 'border-bone/15 bg-ink/85 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.7)]' : 'border-bone/10 bg-ink/55'
             }`}
           >
-            <Link to="/" className="shrink-0 rounded-full" aria-label={`${site.name} — home`}>
+            <Link to="/" className="shrink-0 rounded-full" aria-label={`${site.name}, home`}>
               <Logo />
             </Link>
 

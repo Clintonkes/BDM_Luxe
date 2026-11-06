@@ -1,5 +1,5 @@
 /**
- * BDM Luxe — single source of truth.
+ * BDM Luxe: single source of truth.
  * Business details, brand colours, fonts, navigation and form settings all live
  * here. tailwind.config.js and vite.config.js read this file too, so a change
  * here flows through the whole site (and sitemap/JSON-LD) on the next build.
@@ -33,13 +33,13 @@ export const site = {
   geo: { lat: 38.8795, lng: -82.9969 },
 
   hours: [
-    { label: 'Monday – Friday', short: 'Mon–Fri', days: ['Mo', 'Tu', 'We', 'Th', 'Fr'], open: '08:00', close: '18:00', value: '8:00 am – 6:00 pm' },
-    { label: 'Saturday', short: 'Sat', days: ['Sa'], open: '09:00', close: '14:00', value: '9:00 am – 2:00 pm' },
+    { label: 'Monday to Friday', short: 'Mon to Fri', days: ['Mo', 'Tu', 'We', 'Th', 'Fr'], open: '08:00', close: '18:00', value: '8:00 am to 6:00 pm' },
+    { label: 'Saturday', short: 'Sat', days: ['Sa'], open: '09:00', close: '14:00', value: '9:00 am to 2:00 pm' },
     { label: 'Sunday', short: 'Sun', days: ['Su'], open: null, close: null, value: 'Closed' },
   ],
 
   serviceArea: [
-    { name: 'Lucasville', note: 'Home base — first-call priority', distance: '0 mi' },
+    { name: 'Lucasville', note: 'Home base, first-call priority', distance: '0 mi' },
     { name: 'Minford', note: 'Weekly maintenance routes', distance: '8 mi' },
     { name: 'Portsmouth', note: 'Residential & commercial', distance: '11 mi' },
     { name: 'West Portsmouth', note: 'Residential & commercial', distance: '12 mi' },
@@ -57,18 +57,18 @@ export const site = {
   ],
 
   announcement: {
-    text: 'Spring 2027 maintenance routes are filling — book a free walk-through for Scioto County.',
+    text: 'Spring 2027 maintenance routes are filling. Book a free walk-through for Scioto County.',
     linkLabel: 'Request a quote',
     href: '/quote',
   },
 
   /** Brand palette. Tailwind utilities are generated from these names. */
   colors: {
-    ink: '#121410', // page background — near-black with a soil undertone
+    ink: '#121410', // page background: near-black with a soil undertone
     loam: '#2A2620', // raised surfaces, cards
     bone: '#EFE8DA', // primary text on dark, light sections
     lichen: '#A7AE94', // secondary text, rules
-    clipping: '#D7F25C', // the single bold accent — fresh-cut chartreuse
+    clipping: '#D7F25C', // the single bold accent: fresh-cut chartreuse
   },
 
   fonts: {
@@ -121,7 +121,7 @@ export const site = {
   formSettings: {
     /**
      * Base URL of the FastAPI backend in backend/. Leave empty here and set
-     * VITE_API_URL at build time (GitHub repo variable / local .env) — that
+     * VITE_API_URL at build time (GitHub repo variable / local .env); that
      * value takes precedence. Quote posts to `${apiUrl}/api/bookings`,
      * contact posts to `${apiUrl}/api/contacts`.
      */
@@ -150,7 +150,7 @@ export const site = {
   },
 };
 
-/** Every public route — used by the sitemap generator in vite.config.js. */
+/** Every public route, used by the sitemap generator in vite.config.js. */
 export const routes = [
   '/',
   '/about',

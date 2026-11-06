@@ -35,7 +35,7 @@ export default function Services() {
         }
       />
 
-      {/* Lead service — wide feature card */}
+      {/* Lead service: wide feature card */}
       <section aria-label="Featured service" className="frame pt-16 sm:pt-24">
         <Reveal>
           <Link to={`/services/${lead.slug}`} className="card group grid overflow-hidden lg:grid-cols-2" style={{ '--c': '30px' }}>
@@ -63,7 +63,7 @@ export default function Services() {
         </Reveal>
       </section>
 
-      {/* Remaining services — bento grid */}
+      {/* Remaining services: bento grid */}
       <section aria-labelledby="all-services" className="frame py-16 sm:py-24">
         <h2 id="all-services" className="sr-only">
           All services

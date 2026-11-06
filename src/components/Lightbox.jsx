@@ -56,7 +56,7 @@ export default function Lightbox({ items, index, onClose, onIndex }) {
     >
       <div className="flex items-center justify-between px-4 py-4 sm:px-8">
         <p className="label" aria-live="polite">
-          {String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')} — {item.category}
+          {String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')} · {item.category}
         </p>
         <button
           ref={closeRef}

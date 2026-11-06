@@ -24,7 +24,7 @@ export function MowRule({ accent = false, className = '' }) {
 }
 
 /** Owner-to-confirm marker for trust signals and other unverified content. */
-export function Placeholder({ children = 'Placeholder', title = 'Placeholder — owner to confirm before publishing' }) {
+export function Placeholder({ children = 'Placeholder', title = 'Placeholder: owner to confirm before publishing' }) {
   return (
     <span className="ph" title={title}>
       {children}

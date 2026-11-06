@@ -10,7 +10,7 @@ export const services = [
     slug: 'weekly-maintenance',
     no: '01',
     name: 'Weekly Lawn Maintenance',
-    short: 'Same crew, same day, every week — mowed, edged, trimmed and blown clean.',
+    short: 'Same crew, same day, every week: mowed, edged, trimmed and blown clean.',
     lede: 'A good cut is a routine, not an event. We keep your property on a fixed weekly route so the lawn never gets ahead of us.',
     image: pexels(4162011),
     alt: 'Red walk-behind mower resting on a dense, freshly cut lawn',
@@ -18,9 +18,9 @@ export const services = [
     cadence: 'Weekly or bi-weekly, April through November',
     idealFor: 'Homeowners who want the lawn handled without thinking about it',
     body: [
-      'Mowing height is the single biggest decision in lawn care, and most crews never change it. We cut cool-season turf at 3–3.5 inches in spring, lift to 4 inches through the July heat, and step back down for the last cuts of autumn. Taller grass shades its own roots, holds moisture and crowds out crabgrass.',
-      'Every visit includes a hard edge along walks and drives, string trimming around beds, posts and fences, and a full blow-off of clippings from every hard surface. Blades are sharpened weekly — a dull blade tears grass tips, which brown and invite disease.',
-      'Your property sits on a fixed route day. If weather pushes us, you get a text the evening before — not a no-show.',
+      'Mowing height is the single biggest decision in lawn care, and most crews never change it. We cut cool-season turf at 3 to 3.5 inches in spring, lift to 4 inches through the July heat, and step back down for the last cuts of autumn. Taller grass shades its own roots, holds moisture and crowds out crabgrass.',
+      'Every visit includes a hard edge along walks and drives, string trimming around beds, posts and fences, and a full blow-off of clippings from every hard surface. Blades are sharpened weekly, because a dull blade tears grass tips, which brown and invite disease.',
+      'Your property sits on a fixed route day. If weather pushes us, you get a text the evening before, not a no-show.',
     ],
     includes: [
       'Mowing at a seasonally adjusted height',
@@ -30,21 +30,21 @@ export const services = [
       'Alternating mow direction to prevent ruts',
       'Weather-delay text the evening before',
     ],
-    process: ['Walk-through & route day set', 'First cut — a reset to proper height', 'Weekly visits on your route day', 'Season-end height drop and final cleanup'],
+    process: ['Walk-through & route day set', 'First cut: a reset to proper height', 'Weekly visits on your route day', 'Season-end height drop and final cleanup'],
   },
   {
     slug: 'landscape-design',
     no: '02',
     name: 'Landscape Design & Installation',
     short: 'Planting plans drawn for southern Ohio soil and for how you actually use the yard.',
-    lede: 'We design for year eight, not opening day — plants spaced for their mature size, chosen for clay soil and our humid summers.',
+    lede: 'We design for year eight, not opening day: plants spaced for their mature size, chosen for clay soil and our humid summers.',
     image: pexels(3280078),
     alt: 'Aerial view of a formal garden with geometric beds, paths and a central fountain beside a large home',
     icon: 'PenTool',
     cadence: 'Project-based, best planned in late winter',
     idealFor: 'New builds, tired front elevations, and yards being rethought',
     body: [
-      'Scioto County sits on heavy clay. It holds nutrients well but drains slowly, which drowns plants installed the way the tag says. We amend planting holes properly, set root flares at grade, and favour species that tolerate wet feet — serviceberry, river birch, inkberry holly, little bluestem.',
+      'Scioto County sits on heavy clay. It holds nutrients well but drains slowly, which drowns plants installed the way the tag says. We amend planting holes properly, set root flares at grade, and favour species that tolerate wet feet, such as serviceberry, river birch, inkberry holly, little bluestem.',
       'Design starts with a site walk: sun and shade by season, how water moves after rain, sightlines from the windows you actually look out of. You get a scaled plan with a plant list and a clear quote before anything is dug.',
       'Installation includes bed layout, grading, soil preparation, planting, first mulch and a written watering schedule for the establishment year.',
     ],
@@ -71,7 +71,7 @@ export const services = [
     idealFor: 'Properties where the beds have softened into the lawn',
     body: [
       'We cut a vertical spade edge about three inches deep, so the line holds for the season instead of disappearing in a month. Weeds are pulled by hand, roots included, before anything else happens.',
-      'Mulch goes down at two to three inches — enough to suppress weeds and hold moisture, never piled against trunks. "Mulch volcanoes" around trees invite rot and rodents; we pull mulch back from the bark every time.',
+      'Mulch goes down at two to three inches: enough to suppress weeds and hold moisture, never piled against trunks. "Mulch volcanoes" around trees invite rot and rodents; we pull mulch back from the bark every time.',
       'Choose shredded hardwood, dyed black or brown, or cedar. We will tell you honestly which suits the planting.',
     ],
     includes: [
@@ -82,13 +82,13 @@ export const services = [
       'Light shrub tidy and debris removal',
       'Pre-emergent application on request',
     ],
-    process: ['Bed survey & mulch choice', 'Edge, weed, clear', 'Mulch at 2–3 inches', 'Final blow-off and walk-through'],
+    process: ['Bed survey & mulch choice', 'Edge, weed, clear', 'Mulch at 2 to 3 inches', 'Final blow-off and walk-through'],
   },
   {
     slug: 'hardscape',
     no: '04',
     name: 'Hardscape & Paver Work',
-    short: 'Patios, walks and garden steps built on a base that survives Ohio freeze–thaw.',
+    short: 'Patios, walks and garden steps built on a base that survives Ohio freeze and thaw.',
     lede: 'Hardscape fails at the base. We dig deeper and compact harder than the job seems to need, because winter will test it.',
     image: pexels(39117267),
     alt: 'Stone stepping path curving through a planted garden with a large boulder',
@@ -96,7 +96,7 @@ export const services = [
     cadence: 'Project-based, April through October',
     idealFor: 'Muddy paths, worn patios and garden level changes',
     body: [
-      'Southern Ohio sees dozens of freeze–thaw cycles a winter. Water under a paver freezes, expands and heaves it. The defence is a well-drained, well-compacted aggregate base — typically six inches for walks and eight or more for patios — laid with a slight fall away from the house.',
+      'Southern Ohio sees dozens of freeze and thaw cycles a winter. Water under a paver freezes, expands and heaves it. The defence is a well-drained, well-compacted aggregate base (typically six inches for walks and eight or more for patios) laid with a slight fall away from the house.',
       'We excavate, lay geotextile where the clay demands it, compact the base in lifts, screed bedding sand, set pavers or natural stone, and lock joints with polymeric sand.',
       'For stepping-stone paths and garden steps, each stone is bedded individually so it sits firm underfoot and flush with the turf for mowing.',
     ],
@@ -123,7 +123,7 @@ export const services = [
     idealFor: 'Boxwood, privet, yew and arborvitae hedges, and overgrown foundation shrubs',
     body: [
       'Timing matters as much as technique. Spring-flowering shrubs like forsythia and lilac are pruned right after bloom; cut them in autumn and you remove next year’s flowers. Boxwood and privet take a main shape in late spring and a tidy in late summer.',
-      'Hedges are cut with a slight batter — wider at the base than the top — so sunlight reaches the lower branches and the hedge stays full to the ground.',
+      'Hedges are cut with a slight batter, wider at the base than the top, so sunlight reaches the lower branches and the hedge stays full to the ground.',
       'For overgrown shrubs we use renewal pruning: removing a third of the oldest stems each year, so the plant regenerates without being butchered.',
     ],
     includes: [
@@ -145,7 +145,7 @@ export const services = [
     image: pexels(9620215),
     alt: 'Worker in a red jacket using a backpack leaf blower to clear fallen autumn leaves',
     icon: 'Leaf',
-    cadence: 'Spring (March–April) and autumn (late Oct–Dec)',
+    cadence: 'Spring (March to April) and autumn (late October to December)',
     idealFor: 'Wooded lots and any property with mature trees',
     body: [
       'Autumn cleanups run in two or three passes as the oaks, maples and sycamores drop on their own schedules. We clear lawns, beds and hard surfaces, cut back spent perennials that will not hold winter interest, and mulch-mow light leaf cover back into the turf where it helps.',
@@ -166,7 +166,7 @@ export const services = [
     slug: 'commercial',
     no: '07',
     name: 'Commercial Grounds Care',
-    short: 'Contract maintenance for offices, rentals, churches and HOAs — one crew, one contact.',
+    short: 'Contract maintenance for offices, rentals, churches and HOAs. One crew, one contact.',
     lede: 'Commercial grounds are judged from the parking lot. We schedule around your hours and report issues before tenants do.',
     image: pexels(39625998),
     alt: 'Ride-on tractor mower cutting wide stripes across a large open lawn bordered by hedges',
@@ -175,7 +175,7 @@ export const services = [
     idealFor: 'Property managers, small businesses, churches and HOAs',
     body: [
       'We put the same crew on your contract every visit, so standards do not drift and nobody has to re-learn where the irrigation heads are.',
-      'Visits are scheduled around your operating hours — early mornings for retail and offices, weekdays for churches — and every visit ends with a short note: what was done, and anything we spotted that needs attention.',
+      'Visits are scheduled around your operating hours (early mornings for retail and offices, weekdays for churches), and every visit ends with a short note: what was done, and anything we spotted that needs attention.',
       'One invoice a month, one phone number to call. Proof of insurance is available on request for your vendor file.',
     ],
     includes: [

@@ -22,7 +22,7 @@ function describeError(status, body) {
     }
     const first = Object.keys(fields)[0];
     return new SubmitError(
-      first === 'email' ? 'Please check the email address — the server could not accept it.' : 'Some details could not be accepted. Please check the form and try again.',
+      first === 'email' ? 'Please check the email address. The server could not accept it.' : 'Some details could not be accepted. Please check the form and try again.',
       { status, fields },
     );
   }
@@ -46,7 +46,7 @@ export async function submitForm(type, payload) {
 
   if (!apiUrl) {
     if (import.meta.env.DEV) {
-      console.info(`[BDM Luxe] ${type} submission (dev demo — set VITE_API_URL to send for real)`, payload);
+      console.info(`[BDM Luxe] ${type} submission (dev demo; set VITE_API_URL to send for real)`, payload);
       await new Promise((r) => setTimeout(r, 1100));
       return { demo: true, reference: type === 'quote' ? `BDM-DEMO-${Date.now().toString().slice(-5)}` : undefined };
     }

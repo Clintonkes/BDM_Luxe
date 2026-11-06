@@ -91,7 +91,7 @@ export function CookieBanner() {
         <div>
           <p className="font-semibold text-bone">A note on cookies</p>
           <p className="mt-1.5 text-sm text-bone-dim">
-            We only store your preferences on this device — no advertising trackers. Details in our{' '}
+            We only store your preferences on this device. No advertising trackers. Details in our{' '}
             <Link to="/privacy" className="text-clipping underline underline-offset-2">
               privacy policy
             </Link>

@@ -1,6 +1,6 @@
 /**
  * BDM Luxe mark: a nursery plant-tag (chamfered like the site's ticket-cut
- * shapes) with a hanging hole and three mow-stripe bars — the middle one
+ * shapes) with a hanging hole and three mow-stripe bars, the middle one
  * lighter, as a freshly cut lawn reads from above.
  */
 export function LogoMark({ className = 'h-9 w-9', title }) {

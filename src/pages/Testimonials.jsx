@@ -22,7 +22,7 @@ export default function Testimonials() {
             Judged by the <span className="italic text-clipping">neighbours.</span>
           </>
         }
-        intro="The best review of a lawn is the one a passer-by gives it. Here is what customers say — verified, with their permission."
+        intro="The best review of a lawn is the one a passer-by gives it. Here is what customers say, verified and shared with their permission."
         aside={
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Stars />
@@ -40,11 +40,11 @@ export default function Testimonials() {
           <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-clipping" aria-hidden="true" />
           <p>
             <strong className="text-bone">Review slots awaiting verified reviews.</strong> The cards below show the layout only. Each will be replaced with a
-            real customer review (name or initials, town and service) before publishing — we never invent reviews.
+            real customer review (name or initials, town and service) before publishing. We never invent reviews.
           </p>
         </div>
 
-        {/* Lead review — oversized quote */}
+        {/* Lead review: oversized quote */}
         <Reveal as="figure" className="grid gap-8 border-y border-bone/10 py-12 lg:grid-cols-12">
           <MessageSquareQuote className="h-12 w-12 text-clipping lg:col-span-1" aria-hidden="true" />
           <blockquote className="font-display text-3xl leading-snug text-bone/75 sm:text-4xl lg:col-span-8">“{lead.quote}”</blockquote>
@@ -91,7 +91,7 @@ export default function Testimonials() {
             </Eyebrow>
             <h2 id="leave-title" className="mt-4 text-3xl sm:text-4xl">Tell people what you think.</h2>
             <p className="mt-4 max-w-xl text-bone-dim">
-              Honest reviews help neighbours decide — and tell us what to keep doing. Leave one on our Google profile, or email it and we’ll
+              Honest reviews help neighbours decide and tell us what to keep doing. Leave one on our Google profile, or email it and we’ll
               ask your permission before publishing it here.
             </p>
           </div>

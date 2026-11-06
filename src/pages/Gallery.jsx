@@ -14,7 +14,7 @@ export default function Gallery() {
   return (
     <>
       <Seo
-        title="Gallery — Lawns, Beds, Hedges & Hardscape"
+        title="Gallery: Lawns, Beds, Hedges & Hardscape"
         description="A visual reference for the finish BDM Luxe works toward: striped lawns, spade-cut beds, shaped hedges, stone paths and clean autumn properties in southern Ohio."
       />
       <PageHero

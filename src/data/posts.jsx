@@ -5,7 +5,7 @@ import { pexels } from '@/lib/img';
 export const posts = [
   {
     slug: 'when-to-start-mowing-in-southern-ohio',
-    title: 'When to start mowing in southern Ohio — and how high to cut',
+    title: 'When to start mowing in southern Ohio, and how high to cut',
     excerpt:
       'The first cut of the year sets up the whole season. Here is how to time it by soil temperature, not the calendar, and the mowing heights we use month by month.',
     category: 'Lawn care',
@@ -17,23 +17,23 @@ export const posts = [
       <>
         <p>
           Every spring the same question comes in: <em>when should the first mow happen?</em> In Scioto County the honest
-          answer is “later than you think, and higher than you think.” Cool-season lawns — the tall fescue,
-          Kentucky bluegrass and ryegrass blends that make up most yards here — wake up on soil temperature, and
+          answer is “later than you think, and higher than you think.” Cool-season lawns (the tall fescue,
+          Kentucky bluegrass and ryegrass blends that make up most yards here) wake up on soil temperature, and
           cutting too early or too short costs you the rest of the season.
         </p>
 
         <h2>Time it by the soil, not the date</h2>
         <p>
           Cool-season grass starts active growth once soil at a two-inch depth holds around 50°F for several days.
-          In the Lucasville–Portsmouth area that usually lands somewhere between late March and mid-April, depending
+          In the Lucasville and Portsmouth area that usually lands somewhere between late March and mid-April, depending
           on the year. Two easy signals:
         </p>
         <ul>
-          <li>Forsythia is in full bloom — a reliable natural soil-temperature marker.</li>
+          <li>Forsythia is in full bloom, a reliable natural soil-temperature marker.</li>
           <li>The lawn has visibly grown about an inch past its winter height and is greening evenly, not just in patches.</li>
         </ul>
         <p>
-          Before that, the ground is often soft. Mowing saturated clay — and most of southern Ohio is clay — compacts
+          Before that, the ground is often soft. Mowing saturated clay (and most of southern Ohio is clay) compacts
           it and leaves ruts that last into summer. If your shoe sinks when you walk across the lawn, wait.
         </p>
 
@@ -55,35 +55,35 @@ export const posts = [
           </thead>
           <tbody>
             <tr>
-              <td>First cut (late Mar–Apr)</td>
+              <td>First cut (late Mar to Apr)</td>
               <td>3 in</td>
               <td>Tidies winter growth without stressing waking roots.</td>
             </tr>
             <tr>
-              <td>May–June</td>
+              <td>May to June</td>
               <td>3.5 in</td>
               <td>Peak growth; height shades out crabgrass seedlings.</td>
             </tr>
             <tr>
-              <td>July–August</td>
+              <td>July to August</td>
               <td>4 in</td>
               <td>Taller blades shade the soil and hold moisture through heat.</td>
             </tr>
             <tr>
-              <td>September–October</td>
+              <td>September to October</td>
               <td>3.5 in</td>
               <td>Recovery season; supports autumn root growth.</td>
             </tr>
             <tr>
               <td>Final cuts (Nov)</td>
-              <td>2.5–3 in</td>
+              <td>2.5 to 3 in</td>
               <td>Shorter going into winter reduces snow mould risk.</td>
             </tr>
           </tbody>
         </table>
         <p>
           Kentucky bluegrass-heavy lawns can sit about half an inch lower in each band. If you are not sure what
-          you have, err on the higher side — cutting too tall is very rarely the problem.
+          you have, err on the higher side; cutting too tall is very rarely the problem.
         </p>
 
         <h2>Sharp blades matter more than the mower</h2>
@@ -98,7 +98,7 @@ export const posts = [
         <h2>Leave the clippings</h2>
         <p>
           With the one-third rule followed, clippings are short enough to fall between the blades and break down
-          within days. They return nitrogen to the soil and do not cause thatch — thatch is made of roots and
+          within days. They return nitrogen to the soil and do not cause thatch. Thatch is made of roots and
           stems, not leaf clippings. Bag only when the grass is long or wet enough to clump.
         </p>
 
@@ -147,19 +147,19 @@ export const posts = [
           <li>In our heavy clay, a thick layer on top of slow-draining soil keeps the root zone waterlogged.</li>
         </ul>
         <p>
-          If last year’s mulch is still an inch or two deep, you only need a light top-up — or simply rake and
+          If last year’s mulch is still an inch or two deep, you only need a light top-up, or simply rake and
           refresh what is there. Piling a new three inches on every spring is how beds end up eight inches deep.
         </p>
 
         <h2>Never build a mulch volcano</h2>
         <p>
-          Mulch heaped against a tree trunk is one of the most common — and most damaging — sights in residential
+          Mulch heaped against a tree trunk is one of the most common, and most damaging, sights in residential
           landscaping. Bark is not meant to stay wet. Constant moisture against the trunk invites rot, fungal
           cankers and voles, which tunnel in and chew the bark in winter.
         </p>
         <p>
-          The fix is simple: pull mulch back so the <strong>root flare</strong> — where the trunk widens into the
-          roots — is visible, leaving a gap of three to six inches. Think doughnut, not volcano. The same applies to
+          The fix is simple: pull mulch back so the <strong>root flare</strong> (where the trunk widens into the
+          roots) is visible, leaving a gap of three to six inches. Think doughnut, not volcano. The same applies to
           shrub stems and perennial crowns.
         </p>
 
@@ -207,7 +207,7 @@ export const posts = [
             generous curves are easier to mow around than tight wiggles.
           </li>
           <li>
-            <strong>Cut vertically on the lawn side.</strong> Drive a flat edging spade straight down 3–4 inches
+            <strong>Cut vertically on the lawn side.</strong> Drive a flat edging spade straight down 3 to 4 inches
             along the line. The vertical face is what stops grass roots creeping into the bed.
           </li>
           <li>
@@ -225,13 +225,13 @@ export const posts = [
 
         <h2>When to mulch</h2>
         <p>
-          Mid to late spring, once the soil has warmed — usually late April to May in southern Ohio. Mulching
+          Mid to late spring, once the soil has warmed, usually late April to May in southern Ohio. Mulching
           cold, wet soil in March keeps it cold longer and delays plant growth. A light autumn top-up after leaf
           cleanup helps insulate perennials through winter.
         </p>
 
         <p>
-          Our <Link to="/services/bed-care">bed care service</Link> does all of the above in a single visit — edge,
+          Our <Link to="/services/bed-care">bed care service</Link> does all of the above in a single visit: edge,
           weed, mulch at the right depth and clear trunks.{' '}
           <Link to="/quote">Get a quote for your beds</Link>.
         </p>

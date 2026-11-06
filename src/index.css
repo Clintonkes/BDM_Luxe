@@ -46,7 +46,7 @@
 @layer components {
   .frame { @apply mx-auto w-full max-w-frame px-4 sm:px-6 lg:px-10; }
 
-  /* Small all-caps labels — the "plot marker" voice of the brand. */
+  /* Small all-caps labels: the "plot marker" voice of the brand. */
   .label {
     @apply font-sans text-[0.7rem] font-semibold uppercase tracking-label text-lichen;
   }

@@ -15,7 +15,7 @@ function validate(d) {
   const e = {};
   if (d.name.trim().length < 2) e.name = 'Please tell us your name.';
   if (!isEmail(d.email)) e.email = 'Enter a valid email so we can reply.';
-  if (d.phone.trim() && !isPhone(d.phone)) e.phone = 'That phone number looks incomplete — or leave it blank.';
+  if (d.phone.trim() && !isPhone(d.phone)) e.phone = 'That phone number looks incomplete. Check it, or leave it blank.';
   if (d.message.trim().length < site.formSettings.minMessageLength) e.message = `A little more detail, please (at least ${site.formSettings.minMessageLength} characters).`;
   if (d.message.length > 2000) e.message = 'Please keep your message under 2,000 characters.';
   return e;
@@ -73,7 +73,7 @@ export default function Contact() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (d.company) return; // honeypot — bots fill hidden fields
+    if (d.company) return; // honeypot: bots fill hidden fields
     const errs = validate(d);
     setErrors(errs);
     if (Object.keys(errs).length) {
@@ -125,7 +125,7 @@ export default function Contact() {
   return (
     <>
       <Seo
-        title="Contact Us — Phone, Email & Hours"
+        title="Contact Us: Phone, Email & Hours"
         description={`Call ${site.phone}, email ${site.email}, or send a quick message. BDM Luxe office hours, address in Lucasville, Ohio, and how to reach us.`}
       />
 
@@ -177,7 +177,7 @@ export default function Contact() {
                 {site.address.street}
                 <br />
                 {site.address.city}, {site.address.region} {site.address.postal}
-                <span className="mt-1 block text-sm text-lichen">Office & yard — visits by appointment.</span>
+                <span className="mt-1 block text-sm text-lichen">Office and yard. Visits by appointment.</span>
               </address>
             </div>
           </Reveal>
@@ -203,7 +203,7 @@ export default function Contact() {
                 </div>
               ))}
             </dl>
-            <p className="mt-5 border-t border-bone/10 pt-4 text-xs text-lichen">Eastern Time. Crews are on site during these hours, so calls may go to voicemail — we return every one the same day.</p>
+            <p className="mt-5 border-t border-bone/10 pt-4 text-xs text-lichen">Eastern Time. Crews are on site during these hours, so calls may go to voicemail, but we return every one the same day.</p>
           </Reveal>
         </div>
 
@@ -219,7 +219,7 @@ export default function Contact() {
                 <p className="mt-4 max-w-md text-bone-dim">
                   Thanks, {d.name.trim().split(' ')[0]}. {site.formSettings.replyPromise} A copy is on its way to {d.email}.
                 </p>
-                {demo && <p className="mt-3 text-xs text-lichen">(Development demo — nothing was actually sent.)</p>}
+                {demo && <p className="mt-3 text-xs text-lichen">(Development demo: nothing was actually sent.)</p>}
                 <button
                   type="button"
                   onClick={() => {

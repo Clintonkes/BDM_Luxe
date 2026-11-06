@@ -69,7 +69,7 @@ export default function ServiceAreas() {
   return (
     <>
       <Seo
-        title="Service Areas — Lucasville, Portsmouth, Wheelersburg & Scioto County"
+        title="Service Areas: Lucasville, Portsmouth, Wheelersburg & Scioto County"
         description="BDM Luxe serves Lucasville, Minford, Portsmouth, West Portsmouth, Wheelersburg and Sciotoville on weekly routes, plus Otway, Waverly and Peebles for landscape projects."
       />
       <PageHero
@@ -136,7 +136,7 @@ export default function ServiceAreas() {
             <h2 id="outside-title" className="text-3xl sm:text-4xl">Just outside the map?</h2>
             <p className="mt-4 max-w-md text-bone-dim">
               We take on projects across {site.address.county} and neighbouring Pike and Adams counties when the schedule allows. Commercial
-              contracts are considered case by case. Ask — the worst we can say is “not this season.”
+              contracts are considered case by case. Ask; the worst we can say is “not this season.”
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:justify-end">

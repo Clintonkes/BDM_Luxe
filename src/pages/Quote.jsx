@@ -20,9 +20,9 @@ const OPT = {
   ],
   lotSize: [
     { v: 'under-quarter', l: 'Under ¼ acre', hint: 'Typical town lot' },
-    { v: 'quarter-half', l: '¼ – ½ acre', hint: 'Suburban lot' },
-    { v: 'half-one', l: '½ – 1 acre' },
-    { v: 'one-two', l: '1 – 2 acres' },
+    { v: 'quarter-half', l: '¼ to ½ acre', hint: 'Suburban lot' },
+    { v: 'half-one', l: '½ to 1 acre' },
+    { v: 'one-two', l: '1 to 2 acres' },
     { v: 'two-plus', l: '2+ acres', hint: 'Estate or rural' },
     { v: 'unsure', l: 'Not sure', hint: 'We’ll measure on site' },
   ],
@@ -43,7 +43,7 @@ const OPT = {
     { v: 'one-time', l: 'One-time cut' },
   ],
   condition: [
-    { v: 'kept', l: 'Well kept — just switching provider' },
+    { v: 'kept', l: 'Well kept, just switching provider' },
     { v: 'catch-up', l: 'Needs a catch-up' },
     { v: 'overgrown', l: 'Overgrown / neglected' },
   ],
@@ -54,14 +54,14 @@ const OPT = {
   ],
   budget: [
     { v: 'under-2500', l: 'Under $2,500' },
-    { v: '2500-7500', l: '$2,500 – $7,500' },
-    { v: '7500-15000', l: '$7,500 – $15,000' },
+    { v: '2500-7500', l: '$2,500 to $7,500' },
+    { v: '7500-15000', l: '$7,500 to $15,000' },
     { v: '15000-plus', l: '$15,000+' },
-    { v: 'advise', l: 'Not sure — advise me' },
+    { v: 'advise', l: 'Not sure, advise me' },
   ],
   timeline: [
     { v: 'asap', l: 'As soon as possible' },
-    { v: '1-3-months', l: 'In 1–3 months' },
+    { v: '1-3-months', l: 'In 1 to 3 months' },
     { v: 'next-season', l: 'Next season' },
     { v: 'planning', l: 'Just planning' },
   ],
@@ -78,8 +78,8 @@ const OPT = {
     { v: 'advise', l: 'Recommend one' },
   ],
   timeWindow: [
-    { v: 'morning', l: 'Morning (8–12)' },
-    { v: 'afternoon', l: 'Afternoon (12–6)' },
+    { v: 'morning', l: 'Morning (8 to 12)' },
+    { v: 'afternoon', l: 'Afternoon (12 to 6)' },
     { v: 'either', l: 'Either' },
   ],
   contactBy: [
@@ -390,7 +390,7 @@ export default function Quote() {
     <>
       <Seo
         title="Request a Free Quote"
-        description="Request a free, itemised lawn care or landscaping quote from BDM Luxe. A five-step form about your property and services — the owner replies within one business day."
+        description="Request a free, itemised lawn care or landscaping quote from BDM Luxe. A five-step form about your property and services. The owner replies within one business day."
       />
 
       <section className="frame pb-24 pt-36 sm:pt-40">
@@ -476,7 +476,7 @@ export default function Quote() {
                     <fieldset aria-describedby={errors.services ? 'services-error' : 'services-hint'} data-field="services">
                       <legend className="field-label">Choose all that apply</legend>
                       <p id="services-hint" className="-mt-1 mb-3 text-xs text-lichen">
-                        Not sure? Pick the closest — we’ll refine it on the walk-through.
+                        Not sure? Pick the closest, and we’ll refine it on the walk-through.
                       </p>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {services.map((s) => {
@@ -575,7 +575,7 @@ export default function Quote() {
                         name="startDate"
                         type="date"
                         label="Preferred walk-through date"
-                        hint="Optional — we’ll confirm a time with you."
+                        hint="Optional. We’ll confirm a time with you."
                         value={data.startDate}
                         onChange={set}
                         error={errors.startDate}
@@ -637,7 +637,7 @@ export default function Quote() {
                           className="mt-0.5 h-5 w-5 shrink-0 accent-[#D7F25C]"
                         />
                         <span>
-                          BDM Luxe may contact me about this request. My details are used only to prepare my quote — see the{' '}
+                          BDM Luxe may contact me about this request. My details are used only to prepare my quote. See the{' '}
                           <Link to="/privacy" className="text-clipping underline underline-offset-2">
                             privacy policy
                           </Link>
@@ -651,7 +651,7 @@ export default function Quote() {
 
                 {current.id === 'review' && (
                   <div className="space-y-6">
-                    <p className="text-bone-dim">Everything look right? Use “Edit” to change any section — your answers are kept.</p>
+                    <p className="text-bone-dim">Everything look right? Use “Edit” to change any section; your answers are kept.</p>
                     {[0, 1, 2, 3].map((si) => {
                       const rows = summary.filter((r) => r.step === si);
                       if (!rows.length) return null;
@@ -733,11 +733,11 @@ export default function Quote() {
                 </button>
               </div>
               <p className="mt-4 min-h-[1.25rem] text-right text-xs text-lichen" aria-live="polite">
-                {status === 'submitting' && (slow ? 'Still sending — our server can take up to a minute to wake. Please keep this page open.' : 'Sending your request…')}
+                {status === 'submitting' && (slow ? 'Still sending. Our server can take up to a minute to wake. Please keep this page open.' : 'Sending your request…')}
               </p>
             </form>
 
-            {/* Live summary — a perforated work-order ticket */}
+            {/* Live summary: a perforated work-order ticket */}
             <aside className="lg:col-span-5 xl:col-span-4" aria-labelledby="summary-title">
               <div className="lg:sticky lg:top-32">
                 <div className="ticket bg-bone p-7 text-ink">
@@ -791,7 +791,7 @@ function Confirmation({ data, result }) {
           Your request is with the owner. Expect a {label('contactBy', data.contactBy).toLowerCase() || 'reply'} within one business day to arrange your walk-through
           {data.email ? `, and a confirmation email at ${data.email}` : ''}.
         </p>
-        {result?.demo && <p className="mt-4 text-xs text-lichen">(Development demo — no request was actually sent. Set VITE_API_URL to connect the backend.)</p>}
+        {result?.demo && <p className="mt-4 text-xs text-lichen">(Development demo: no request was actually sent. Set VITE_API_URL to connect the backend.)</p>}
         <ol className="mt-10 space-y-5 border-l border-bone/15 pl-6">
           {['We review your answers and check the route for your area.', 'We contact you to confirm a walk-through time.', 'You receive a written, itemised quote within two business days of the visit.'].map((t, i) => (
             <li key={t} className="relative">

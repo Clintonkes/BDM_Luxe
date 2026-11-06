@@ -95,7 +95,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-bone/15 text-bone-dim hover:border-clipping hover:text-clipping"
-                  title={s.placeholder ? `${s.label} — placeholder link, owner to add profile URL` : s.label}
+                  title={s.placeholder ? `${s.label}: placeholder link, owner to add profile URL` : s.label}
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                   <span className="sr-only">

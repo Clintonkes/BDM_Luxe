@@ -45,7 +45,7 @@ export default function Pricing() {
       <section aria-labelledby="compare-title" className="frame py-16 sm:py-24">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 id="compare-title" className="text-3xl sm:text-4xl">Compare maintenance plans</h2>
-          <Placeholder>Prices — owner to set before publishing</Placeholder>
+          <Placeholder>Prices: owner to set before publishing</Placeholder>
         </div>
 
         {/* Mobile: stacked plan tickets */}
@@ -64,7 +64,7 @@ export default function Pricing() {
                       <Check className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                       <span>
                         {f.label}
-                        {typeof f.values[pi] === 'string' && <span className="opacity-70"> — {f.values[pi]}</span>}
+                        {typeof f.values[pi] === 'string' && <span className="opacity-70"> ({f.values[pi]})</span>}
                       </span>
                     </li>
                   ))}
@@ -168,7 +168,7 @@ export default function Pricing() {
         </div>
         <div className="space-y-4 text-bone-dim">
           <p>
-            Projects are quoted as a single fixed price after the walk-through and plan — no hourly surprises. A deposit secures your
+            Projects are quoted as a single fixed price after the walk-through and plan, with no hourly surprises. A deposit secures your
             date; the balance is due on completion after you have walked the finished work with us.
           </p>
           <p>Seasonal cleanups are quoted per visit, with haul-away included. Commercial contracts are priced annually and invoiced monthly.</p>

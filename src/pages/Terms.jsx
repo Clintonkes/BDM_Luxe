@@ -62,7 +62,7 @@ export default function Terms() {
       </p>
       <h2 id="law">Governing law</h2>
       <p>
-        These terms are governed by the laws of the State of Ohio. Questions? <Link to="/contact">Contact us</Link> — most things are easier sorted on the phone
+        These terms are governed by the laws of the State of Ohio. Questions? <Link to="/contact">Contact us</Link>; most things are easier sorted on the phone
         at <a href={site.phoneHref}>{site.phone}</a>.
       </p>
     </Legal>

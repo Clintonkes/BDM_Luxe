@@ -14,7 +14,7 @@ export function useStoredState(key, initial) {
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      /* storage unavailable — keep in memory only */
+      /* storage unavailable; keep in memory only */
     }
   }, [key, value]);
   return [value, setValue];
