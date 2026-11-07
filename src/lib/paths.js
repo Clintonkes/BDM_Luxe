@@ -14,6 +14,6 @@ function detectBasename() {
 export const routerBasename = detectBasename();
 
 /** Absolute canonical origin (custom domain or github.io), set at build time. */
-export const SITE_URL = (import.meta.env.VITE_SITE_URL || site.deploy.githubUrl).replace(/\/+$/, '');
+export const SITE_URL = (import.meta.env.VITE_SITE_URL || site.deploy.domain || site.deploy.githubUrl).replace(/\/+$/, '');
 
 export const absoluteUrl = (path = '/') => `${SITE_URL}${path === '/' ? '/' : path}`;

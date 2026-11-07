@@ -32,8 +32,9 @@ origins = [
     # GitHub Pages default URL (the site is served from /<repo> there; an
     # origin has no path, so this one entry covers it).
     "https://clintonkes.github.io",
-    # Custom domain: add it via the CORS_ORIGINS env var on Render
-    # (e.g. https://example.com,https://www.example.com), no code change needed.
+    # Production domain.
+    "https://bdmluxe.com",
+    "https://www.bdmluxe.com",
 ]
 render_url = os.getenv("RENDER_EXTERNAL_URL")
 if render_url:

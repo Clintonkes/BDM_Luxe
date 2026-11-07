@@ -147,6 +147,8 @@ export const site = {
     // both https://clintonkes.github.io/BDM_Luxe/ and a custom domain root.
     repoBase: 'BDM_Luxe',
     githubUrl: 'https://clintonkes.github.io/BDM_Luxe',
+    // Live domain (GitHub Pages custom domain; github.io redirects here).
+    domain: 'https://bdmluxe.com',
   },
 };
 

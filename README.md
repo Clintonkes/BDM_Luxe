@@ -59,7 +59,7 @@ Checks: `npm run lint` and `npm run build`. To test a production build locally a
    - `DATABASE_URL`: a Postgres database (for example Neon).
    - `ADMIN_EMAIL` and `ADMIN_PASSWORD`: the admin API login. New quote and contact notifications go to `ADMIN_EMAIL`.
    - `RESEND_API_KEY` and `EMAIL_FROM`: optional. Without them, emails are logged instead of sent.
-   - `CORS_ORIGINS`: your custom domain once you have one, for example `https://example.com,https://www.example.com`.
+   - `CORS_ORIGINS`: optional extra frontend origins. bdmluxe.com is already allowed.
 3. Check that `https://<service>.onrender.com/api/health` returns `{"status":"ok"}`.
 
 The free Render plan sleeps when idle, so the first submission after a quiet spell can take up to a minute. The forms wait 75 s and tell the visitor what's happening.
@@ -70,9 +70,9 @@ The free Render plan sleeps when idle, so the first submission after a quiet spe
 2. Repo → Settings → Secrets and variables → Actions → **Variables**: set `VITE_API_URL` to the Render URL.
 3. Push to `main`, or open Actions → "Deploy Frontend to GitHub Pages" → Run workflow.
 
-The site is then live at **https://clintonkes.github.io/BDM_Luxe/**.
+The site is live at **https://bdmluxe.com** (the github.io URL, https://clintonkes.github.io/BDM_Luxe/, redirects there).
 
-### 3. Custom domain
+### 3. Custom domain (bdmluxe.com, set up)
 
 The same build works under `/BDM_Luxe/` and at a domain root. The router base and asset URLs are worked out in the browser (`src/lib/paths.js`, `vite.config.js`), and `public/404.html` handles deep links in both cases.
 
@@ -81,7 +81,7 @@ The same build works under `/BDM_Luxe/` and at a domain root. The router base an
    - `CNAME` for `www`: `clintonkes.github.io`
 2. Repo → Settings → Pages → **Custom domain**: enter the domain, then tick **Enforce HTTPS** once the certificate is issued.
 3. Add the repo variable `CUSTOM_DOMAIN` (for example `example.com`) and re-run the workflow. This points canonical URLs, Open Graph tags, `sitemap.xml` and `robots.txt` at the domain.
-4. On Render, add the domain to `CORS_ORIGINS`. `https://clintonkes.github.io` is already allowed.
+4. `https://bdmluxe.com`, `https://www.bdmluxe.com` and `https://clintonkes.github.io` are already allowed in `backend/main.py`, so `CORS_ORIGINS` can stay empty.
 
 Once the domain is attached, GitHub redirects the github.io link to it, so both links keep working.
 

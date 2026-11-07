@@ -8,7 +8,7 @@ import { site, routes } from './src/config/site.js';
  * SITE_URL to the custom domain once one is configured; otherwise the
  * GitHub Pages project URL is used.
  */
-const SITE_URL = (process.env.SITE_URL || site.deploy.githubUrl).replace(/\/+$/, '');
+const SITE_URL = (process.env.SITE_URL || site.deploy.domain || site.deploy.githubUrl).replace(/\/+$/, '');
 
 /** Emits sitemap.xml and robots.txt from the route list in src/config/site.js. */
 function seoFiles() {
