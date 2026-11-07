@@ -31,7 +31,7 @@ Items marked **Placeholder** on the site (trust signals, reviews, team names, pr
 
 Each submission is saved, the customer gets a confirmation email, and `ADMIN_EMAIL` gets a notification. Replying to that notification goes straight to the customer.
 
-If `VITE_API_URL` is not set, `npm run dev` runs the forms in demo mode. A production build instead asks visitors to call or email, so no enquiry is silently lost.
+If `VITE_API_URL` is not set, the forms run in demo mode (dev and production): visitors see the success screen, but nothing is stored or emailed. Set `VITE_API_URL` once the backend is deployed.
 
 ## Local development
 

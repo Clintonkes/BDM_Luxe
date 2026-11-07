@@ -789,9 +789,9 @@ function Confirmation({ data, result }) {
         <h2 className="mt-6 text-4xl sm:text-5xl">Thank you, {first}.</h2>
         <p className="mt-5 max-w-xl text-lg text-bone-dim">
           Your request is with the owner. Expect a {label('contactBy', data.contactBy).toLowerCase() || 'reply'} within one business day to arrange your walk-through
-          {data.email ? `, and a confirmation email at ${data.email}` : ''}.
+          {data.email && !result?.demo ? `, and a confirmation email at ${data.email}` : ''}.
         </p>
-        {result?.demo && <p className="mt-4 text-xs text-lichen">(Development demo: no request was actually sent. Set VITE_API_URL to connect the backend.)</p>}
+        {result?.demo && import.meta.env.DEV && <p className="mt-4 text-xs text-lichen">(Development demo: no request was actually sent. Set VITE_API_URL to connect the backend.)</p>}
         <ol className="mt-10 space-y-5 border-l border-bone/15 pl-6">
           {['We review your answers and check the route for your area.', 'We contact you to confirm a walk-through time.', 'You receive a written, itemised quote within two business days of the visit.'].map((t, i) => (
             <li key={t} className="relative">

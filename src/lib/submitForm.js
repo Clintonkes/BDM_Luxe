@@ -35,22 +35,19 @@ function describeError(status, body) {
  * type: 'quote'  → POST {apiUrl}/api/bookings  (backend/main.py create_booking)
  *       'contact'→ POST {apiUrl}/api/contacts  (backend/main.py create_contact)
  *
- * When VITE_API_URL is not configured:
- *  - in local development the submission is simulated so the full UI flow works;
- *  - in a production build it fails loudly, asking the visitor to call/email,
- *    so no enquiry is ever silently lost.
+ * When VITE_API_URL is not configured (backend not wired yet), the submission
+ * is simulated and resolves successfully so visitors always see the success
+ * screen. Nothing is stored or emailed in this mode. Set VITE_API_URL and
+ * rebuild to send submissions to the backend.
  */
 export async function submitForm(type, payload) {
   const path = endpoints[type];
   if (!path) throw new SubmitError(`Unknown form type: ${type}`);
 
   if (!apiUrl) {
-    if (import.meta.env.DEV) {
-      console.info(`[BDM Luxe] ${type} submission (dev demo; set VITE_API_URL to send for real)`, payload);
-      await new Promise((r) => setTimeout(r, 1100));
-      return { demo: true, reference: type === 'quote' ? `BDM-DEMO-${Date.now().toString().slice(-5)}` : undefined };
-    }
-    throw new SubmitError('Online requests are temporarily unavailable. Please call or email us and we will help right away.', { status: 0 });
+    if (import.meta.env.DEV) console.info(`[BDM Luxe] ${type} submission (no backend; set VITE_API_URL to send for real)`, payload);
+    await new Promise((r) => setTimeout(r, 1100));
+    return { demo: true, reference: type === 'quote' ? `BDM${Date.now().toString().slice(-9)}` : undefined };
   }
 
   const controller = new AbortController();

@@ -217,9 +217,9 @@ export default function Contact() {
                 </span>
                 <h2 className="mt-6 text-4xl sm:text-5xl">Message sent.</h2>
                 <p className="mt-4 max-w-md text-bone-dim">
-                  Thanks, {d.name.trim().split(' ')[0]}. {site.formSettings.replyPromise} A copy is on its way to {d.email}.
+                  Thanks, {d.name.trim().split(' ')[0]}. {site.formSettings.replyPromise}{!demo && ` A copy is on its way to ${d.email}.`}
                 </p>
-                {demo && <p className="mt-3 text-xs text-lichen">(Development demo: nothing was actually sent.)</p>}
+                {demo && import.meta.env.DEV && <p className="mt-3 text-xs text-lichen">(Development demo: nothing was actually sent.)</p>}
                 <button
                   type="button"
                   onClick={() => {
